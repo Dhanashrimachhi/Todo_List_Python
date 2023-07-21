@@ -1,0 +1,69 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+      body{
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 500% 500%;
+        /*animation: gradient 10s ease-in-out infinite;*/
+        height: 100vh;
+      }
+      @keyframes gradient{
+        0%, 100%{
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100%{
+          background-position: 0% 50%;
+        }
+      }
+      input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+    </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>ToDo App {% block title %}{% endblock title %}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">ToDo Web App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+          
+          <form class="form-inline my-2"   method="POST">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-sm-10 offset-3">
+              <input class="form-control form-control-lg mr-lg-4" type="search" placeholder="To-Do List" aria-label="Search" name="item"></div>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="col">    
+              <button class="btn btn-outline-light form-control form-control-lg  mr-lg-4" type="submit">Add To List</button></div>
+            </div>
+         <!--</div>-->
+        </form>
+    </nav>
+    <div class="container">
+      {% block content %}
+      
+      {% endblock content %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  </body>
+</html>
